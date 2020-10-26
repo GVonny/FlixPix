@@ -33,7 +33,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="164dp"
         android:layout_marginRight="164dp"
-        android:background="#E1AF00"
+        android:background="#E81123"
         android:text="Flix Wheel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
