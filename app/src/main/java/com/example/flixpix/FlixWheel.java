@@ -17,8 +17,9 @@ public class FlixWheel extends AppCompatActivity {
 
     ImageView wheelimg;
     TextView result;
+    TextView winner;
 
-    String[] sectors = {"01","02","03","04","05","06","07","08"};
+    String[] sectors = {"1","2","3","4","5","6","7","8"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class FlixWheel extends AppCompatActivity {
 
         wheelimg = findViewById(R.id.wheel);
         result = findViewById(R.id.result);
+        winner = findViewById(R.id.winner);
 
         Collections.reverse(Arrays.asList(sectors));
     }
@@ -41,7 +43,7 @@ public class FlixWheel extends AppCompatActivity {
         Random rr = new Random();
         final int degree = rr.nextInt(360);
 
-        RotateAnimation rotateAnimation = new RotateAnimation(0, degree + 720, RotateAnimation.RELATIVE_TO_SELF,.5f, RotateAnimation.RELATIVE_TO_SELF, .5f);
+        RotateAnimation rotateAnimation = new RotateAnimation(0, degree + 1080, RotateAnimation.RELATIVE_TO_SELF,.5f, RotateAnimation.RELATIVE_TO_SELF, .5f);
 
         rotateAnimation.setDuration(3000);
         rotateAnimation.setFillAfter(true);
@@ -50,7 +52,8 @@ public class FlixWheel extends AppCompatActivity {
         rotateAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
+                winner.setVisibility(View.INVISIBLE);
+                result.setText("");
             }
 
             @Override
@@ -80,8 +83,10 @@ public class FlixWheel extends AppCompatActivity {
             }
             initialPoint += 45;
             endPoint += 45;
+            i++;
         }while(res == null);
 
+        winner.setVisibility(View.VISIBLE);
         result.setText(res);
     }
 }
