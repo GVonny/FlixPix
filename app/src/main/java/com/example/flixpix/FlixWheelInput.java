@@ -7,27 +7,32 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class FlixWheelInput extends AppCompatActivity {
 
-    Button button;
+    Button spin;
+
+    public FlixWheelInput()
+    {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.flix_wheel_input);
 
-        button = (Button)findViewById(R.id.flix_wheel);
-        button.setOnClickListener(new View.OnClickListener() {
+        spin = (Button)findViewById(R.id.spin);
+        spin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FlixWheel();
+                Spin();
             }
         });
     }
 
-    public void FlixWheel()
+    public void Spin()
     {
-        Intent intent = new Intent(this, FlixWheelInput.class);
+        Intent intent = new Intent(this, FlixWheel.class);
         startActivity(intent);
     }
 }

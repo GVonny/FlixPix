@@ -18,5 +18,6 @@
         </activity>
 
         <activity android:name=".FlixWheel"></activity>
+        <activity android:name=".FlixWheelInput"></activity>
     </application>
 </manifest>

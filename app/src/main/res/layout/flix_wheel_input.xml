@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_wo_reel">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/header3"
+            android:layout_width="171dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentCenter="true"
+            android:text="Flix Wheel"
+            android:textColor="#FFC107"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="107dp"
+        android:layout_marginLeft="107dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginRight="107dp"
+        android:text="Enter your Movies:"
+        android:textAllCaps="false"
+        android:textColor="#FFC107"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/movie_1"
+        android:layout_width="278dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:autoText="false"
+        android:backgroundTint="#FFEB3B"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Movie 1"
+        android:textColor="#CDDC39"
+        android:textColorHighlight="#FFEB3B"
+        android:textColorHint="#FFEB3B" />
+
+    <EditText
+        android:id="@+id/movie_2"
+        android:layout_width="278dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="35dp"
+        android:autoText="false"
+        android:backgroundTint="#FFEB3B"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Movie 2"
+        android:textColor="#CDDC39"
+        android:textColorHighlight="#FFEB3B"
+        android:textColorHint="#FFEB3B" />
+
+    <EditText
+        android:id="@+id/movie_3"
+        android:layout_width="278dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="33dp"
+        android:autoText="false"
+        android:backgroundTint="#FFEB3B"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Movie 3"
+        android:textColor="#CDDC39"
+        android:textColorHighlight="#FFEB3B"
+        android:textColorHint="#FFEB3B" />
+
+    <EditText
+        android:id="@+id/movie_4"
+        android:layout_width="278dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="34dp"
+        android:autoText="false"
+        android:backgroundTint="#FFEB3B"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Movie 4"
+        android:textColor="#CDDC39"
+        android:textColorHighlight="#FFEB3B"
+        android:textColorHint="#FFEB3B" />
+
+    <Button
+        android:id="@+id/spin"
+        android:layout_width="164dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="151dp"
+        android:layout_marginRight="151dp"
+        android:background="#FFC107"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Spin the Wheel"
+        android:textColor="#530601" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="356dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginBottom="88dp"
+        android:layout_gravity="center"
+        android:background="#FFC107" />
+
+</LinearLayout>
