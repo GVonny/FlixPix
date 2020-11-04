@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="65dp"
-        android:text="Enter your Movies:"
+        android:text="Enter your Shows:"
         android:textAllCaps="false"
         android:textColor="#FFC107"
         android:textSize="24sp" />
@@ -44,10 +44,10 @@
         android:layout_marginTop="24dp"
         android:backgroundTint="#FFEB3B"
         android:ems="10"
-        android:hint="Movie 1"
+        android:hint="Movie/Show 1"
         android:textColor="#CDDC39"
         android:textColorHighlight="#FFEB3B"
-        android:textColorHint="#FFEB3B"/>
+        android:textColorHint="#FFEB3B" />
 
     <EditText
         android:id="@+id/movie_2"
@@ -57,7 +57,7 @@
         android:layout_marginTop="35dp"
         android:backgroundTint="#FFEB3B"
         android:ems="10"
-        android:hint="Movie 2"
+        android:hint="Movie/Show 2"
         android:textColor="#CDDC39"
         android:textColorHighlight="#FFEB3B"
         android:textColorHint="#FFEB3B" />
@@ -70,7 +70,7 @@
         android:layout_marginTop="33dp"
         android:backgroundTint="#FFEB3B"
         android:ems="10"
-        android:hint="Movie 3"
+        android:hint="Movie/Show 3"
         android:textColor="#CDDC39"
         android:textColorHighlight="#FFEB3B"
         android:textColorHint="#FFEB3B" />
@@ -83,7 +83,7 @@
         android:layout_marginTop="34dp"
         android:backgroundTint="#FFEB3B"
         android:ems="10"
-        android:hint="Movie 4"
+        android:hint="Movie/Show 4"
         android:textColor="#CDDC39"
         android:textColorHighlight="#FFEB3B"
         android:textColorHint="#FFEB3B" />

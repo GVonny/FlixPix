@@ -20,11 +20,6 @@ public class FlixWheelInput extends AppCompatActivity {
     EditText movie3;
     EditText movie4;
 
-    public FlixWheelInput()
-    {
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

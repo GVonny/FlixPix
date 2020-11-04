@@ -19,5 +19,6 @@
 
         <activity android:name=".FlixWheel"></activity>
         <activity android:name=".FlixWheelInput"></activity>
+        <activity android:name=".IMDBSearch"></activity>
     </application>
 </manifest>

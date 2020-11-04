@@ -1,42 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/background_w_reel"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/header2"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="146dp"
-        android:layout_marginRight="146dp"
-        android:text="Flix Pix"
-        android:textColor="#CDDC39"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/header2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flix Pix"
+            android:textColor="#CDDC39"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/flix_wheel"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginLeft="159dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginRight="164dp"
-        android:background="#ECB100"
-        android:text="Flix Wheel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header2" />
+        android:layout_gravity="center"
+        android:layout_marginTop="65dp"
+        android:background="#E3AA01"
+        android:text="Flix Wheel" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Enter a selection of movies and spin the Flix Wheel to have the app decide your movie/show selection"
+        android:textColor="#FFC107" />
+
+    <Button
+        android:id="@+id/title_search"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="65dp"
+        android:background="#E3AA01"
+        android:text="IMDB Search" />
+
+    <LinearLayout
+        android:id="@+id/imdb_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <EditText
+            android:id="@+id/search_title"
+            android:layout_width="250dp"
+            android:layout_height="49dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="#FFEB3B"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Title Search"
+            android:textColor="#CDDC39"
+            android:textColorHighlight="#FFEB3B"
+            android:textColorHint="#FFEB3B" />
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#E3AA01"
+            android:gravity="center"
+            android:onClick="IMDBSearch"
+            android:text="Search" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginBottom="88dp"
+        android:background="#FFC107" />
+</LinearLayout>
