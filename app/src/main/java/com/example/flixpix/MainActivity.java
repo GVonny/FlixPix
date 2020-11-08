@@ -7,17 +7,38 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    LinearLayout layout;
     Button flixwheel;
     Button search;
+    Button show_form;
     EditText searchTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        layout = (LinearLayout)findViewById(R.id.imdb_search);
+        show_form = (Button)findViewById(R.id.show_form);
+        show_form.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                if(layout.getVisibility() == View.VISIBLE)
+                {
+                    layout.setVisibility(v.INVISIBLE);
+                }
+                else
+                {
+                    layout.setVisibility(v.VISIBLE);
+                }
+
+            }
+        });
 
         searchTitle = (EditText)findViewById(R.id.search_title);
         search = (Button)findViewById(R.id.search);
