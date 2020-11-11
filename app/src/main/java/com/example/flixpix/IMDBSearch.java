@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -55,8 +56,14 @@ public class IMDBSearch extends AppCompatActivity {
                 System.out.println(responseBody);
                 JSONObject object = new JSONObject(responseBody);
 
-                String id = object.getString("id");
-                System.out.println(id);
+                //JSONArray id = object.getJSONArray("titleType");
+                //System.out.println(id);
+
+                //Iterator<String> keys = object.keys();
+                //System.out.println("");
+
+                JSONArray results = object.getJSONArray("results");
+                System.out.println("");
             }
             catch (IOException | JSONException e)
             {
