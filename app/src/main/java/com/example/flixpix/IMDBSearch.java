@@ -53,8 +53,12 @@ public class IMDBSearch extends AppCompatActivity {
                 Response response = client.newCall(request).execute();
                 String responseBody = response.body().string();
                 System.out.println(responseBody);
+                JSONObject object = new JSONObject(responseBody);
+
+                String id = object.getString("id");
+                System.out.println(id);
             }
-            catch (IOException e)
+            catch (IOException | JSONException e)
             {
                 e.printStackTrace();
             }
