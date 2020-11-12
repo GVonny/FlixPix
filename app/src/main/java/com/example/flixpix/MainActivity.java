@@ -3,11 +3,22 @@ package com.example.flixpix;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,18 +75,73 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    String title;
+    Intent intent;
     public void IMDBSearch()
     {
-        String title = searchTitle.getText().toString();
+        title = searchTitle.getText().toString();
         if(!title.equals(""))
         {
-            Intent intent = new Intent(this, IMDBSearch.class);
-            intent.putExtra("title", title);
-            startActivity(intent);
+            title.replaceAll(" ", "%20");
+
+            new MyTask().execute();
+            intent = new Intent(this, IMDBSearch.class);
         }
         else
         {
             searchTitle.setHint("Please enter a title.");
+        }
+    }
+
+    String movie_title;
+    String url;
+    private class MyTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("https://rapidapi.p.rapidapi.com/title/find?q=" + title)
+                    .get()
+                    .addHeader("x-rapidapi-key", "7c57c58d8cmshc44eb6b914339e8p15232djsn6acde32e5206")
+                    .addHeader("x-rapidapi-host", "imdb8.p.rapidapi.com")
+                    .build();
+
+            try
+            {
+                Response response = client.newCall(request).execute();
+                String responseBody = response.body().string();
+                //System.out.println(responseBody);
+                JSONObject object = new JSONObject(responseBody);
+
+                JSONArray results = object.getJSONArray("results");
+
+                for(int x = 0; x < results.length(); x++)
+                {
+                    JSONObject result = results.getJSONObject(x);
+                    String titleType = result.getString("titleType");
+                    if(titleType.equals("movie") && !titleType.equals("") && !titleType.equals(null))
+                    {
+                        movie_title = result.getString("title");
+                        JSONObject url_data = result.getJSONObject("image");
+                        url = url_data.getString("url");
+
+                        break;
+                    }
+                }
+                intent.putExtra("title", movie_title);
+                intent.putExtra("url", url);
+                startActivity(intent);
+            }
+            catch (IOException | JSONException e)
+            {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
         }
     }
 }

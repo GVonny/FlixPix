@@ -31,7 +31,6 @@ public class IMDBSearch extends AppCompatActivity {
     ImageView thumbnail;
     TextView movie_title;
 
-    String searched;
     String title;
     String url;
     @Override
@@ -44,108 +43,12 @@ public class IMDBSearch extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        searched = i.getStringExtra("title");
-        searched.replaceAll(" ", "%20");
+        title = i.getStringExtra("title");
+        url = i.getStringExtra("url");
 
-        //sendGetRequest();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try  {
-                    OkHttpClient client = new OkHttpClient();
-
-                    Request request = new Request.Builder()
-                            .url("https://rapidapi.p.rapidapi.com/title/find?q=" + searched)
-                            .get()
-                            .addHeader("x-rapidapi-key", "7c57c58d8cmshc44eb6b914339e8p15232djsn6acde32e5206")
-                            .addHeader("x-rapidapi-host", "imdb8.p.rapidapi.com")
-                            .build();
-
-                    try
-                    {
-                        Response response = client.newCall(request).execute();
-                        String responseBody = response.body().string();
-                        System.out.println(responseBody);
-                        JSONObject object = new JSONObject(responseBody);
-
-                        JSONArray results = object.getJSONArray("results");
-
-                        for(int x = 0; x < results.length(); x++)
-                        {
-                            JSONObject result = results.getJSONObject(x);
-                            String titleType = result.getString("titleType");
-                            if(titleType.equals("movie") && !titleType.equals("") && !titleType.equals(null))
-                            {
-                                title = result.getString("title");
-                                JSONObject url_data = result.getJSONObject("image");
-                                url = url_data.getString("url");
-
-                                movie_title.setText(title);
-                                Picasso.with(IMDBSearch.this).load(url).into(thumbnail);
-
-                                break;
-                            }
-                        }
-                        System.out.println("");
-                    }
-                    catch (IOException | JSONException e)
-                    {
-                        e.printStackTrace();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        movie_title.setText(title);
+        Picasso.with(IMDBSearch.this).load(url).into(thumbnail);
 
 
-    }
-
-    private class MyTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            OkHttpClient client = new OkHttpClient();
-
-            Request request = new Request.Builder()
-                    .url("https://rapidapi.p.rapidapi.com/title/find?q=" + searched)
-                    .get()
-                    .addHeader("x-rapidapi-key", "7c57c58d8cmshc44eb6b914339e8p15232djsn6acde32e5206")
-                    .addHeader("x-rapidapi-host", "imdb8.p.rapidapi.com")
-                    .build();
-
-            try
-            {
-                Response response = client.newCall(request).execute();
-                String responseBody = response.body().string();
-                System.out.println(responseBody);
-                JSONObject object = new JSONObject(responseBody);
-
-                JSONArray results = object.getJSONArray("results");
-
-                for(int x = 0; x < results.length(); x++)
-                {
-                    JSONObject result = results.getJSONObject(x);
-                    String titleType = result.getString("titleType");
-                    if(titleType.equals("movie") && !titleType.equals("") && !titleType.equals(null))
-                    {
-                        title = result.getString("title");
-                        JSONObject url_data = result.getJSONObject("image");
-                        url = url_data.getString("url");
-                        break;
-                    }
-                }
-                System.out.println("");
-            }
-            catch (IOException | JSONException e)
-            {
-                e.printStackTrace();
-            }
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-        }
     }
 }
