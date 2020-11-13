@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="65dp"
-        android:text="Enter your Shows:"
+        android:text="Enter your watch selections:"
         android:textAllCaps="false"
         android:textColor="#FFC107"
         android:textSize="24sp" />

@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -95,7 +96,12 @@ public class MainActivity extends AppCompatActivity {
 
     String movie_title;
     String url;
+    int movie_length;
+    int year;
+
     private class MyTask extends AsyncTask<Void, Void, Void> {
+        ArrayList<String> lead_actors = new ArrayList<>();
+        ArrayList<String> lead_characters = new ArrayList<>();
         @Override
         protected Void doInBackground(Void... voids) {
             OkHttpClient client = new OkHttpClient();
@@ -123,14 +129,35 @@ public class MainActivity extends AppCompatActivity {
                     if(titleType.equals("movie") && !titleType.equals("") && !titleType.equals(null))
                     {
                         movie_title = result.getString("title");
-                        JSONObject url_data = result.getJSONObject("image");
-                        url = url_data.getString("url");
+                        JSONObject image_data = result.getJSONObject("image");
+                        url = image_data.getString("url");
+                        movie_length = result.getInt("runningTimeInMinutes");
+                        year = result.getInt("year");
+
+                        JSONArray principles = result.getJSONArray("principals");
+                        System.out.print("");
+
+                        for(int y = 0; y < 3; y++)
+                        {
+                            JSONObject actor = principles.getJSONObject(y);
+                            String actor_name = actor.getString("name");
+                            JSONArray characters = actor.getJSONArray("characters");
+                            String character_name = characters.getString(0);
+
+                            lead_actors.add(actor_name);
+                            lead_characters.add(character_name);
+                        }
 
                         break;
                     }
                 }
                 intent.putExtra("title", movie_title);
                 intent.putExtra("url", url);
+                intent.putExtra("length", movie_length);
+                intent.putExtra("year", year);
+
+                intent.putStringArrayListExtra("actors", lead_actors);
+                intent.putStringArrayListExtra("characters", lead_characters);
                 startActivity(intent);
             }
             catch (IOException | JSONException e)
